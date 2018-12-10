@@ -16,30 +16,32 @@ for (let i = 0; i < word.length; i++) {
 }
 
 let remainLetters = word.length;
+let attempt = word.length;
 
 // Game loop
-while (remainLetters > 0) {
+while (remainLetters > 0 && attempt > 0) {
     // Show condition of the game
     alert(answerArray.join(' '));
 
-    let guess = prompt('Please, enter you letter');
+    let guess = prompt('Please, enter you letter').toLowerCase();
     if (guess === null) {
         break;
     }
     else if (guess.length !== 1) {
         alert('Please, enter only one letter!');
+
     }
     //Reload game
     else {
+        attempt--;
         for (let j = 0; j < word.length; j++) {
             if (word[j] === guess) {
                 answerArray[j] = guess;
                 remainLetters--;
             }
-
         }
     }
 }
 
 alert(answerArray.join(' '));
-alert('Our congratulations! The word was ' + word);
+alert('The word was ' + word);
